@@ -8,8 +8,8 @@ app.set('view engine', 'pug');
 app.use(morgan('dev'));
 app.use(routes); // is this being used for something other than a middleware?
 
-app.use((req,res, next) => {
-    const err = new Error('The requested pge couldn\'t be found.');
+app.use((req, res, next) => {
+    const err = new Error('The requested page couldn\'t be found.');
     err.status = 404;
     next(err);
 });
@@ -29,7 +29,7 @@ app.use((err, req, res, next) => {
         res.render('page-not-found', {
             title: 'Page Not Found',
         });
-    }else {
+    } else {
         next(err);
     }
 });
@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
     const isProduction = proces.env.NODE_ENV === 'production';
     res.render('error', {
         title: 'Server Error',
-        message: isProduction ? null : err.message, 
+        message: isProduction ? null : err.message,
         stack: isProduction ? null : err.stack,
     });
 });
