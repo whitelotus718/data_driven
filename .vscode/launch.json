@@ -8,10 +8,17 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+              "run-script",
+              "start"
+            ],
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/index.js",
+            "restart": true,
+            "console": "integratedTerminal",
+            "program": "${workspaceFolder}/bin/www",
             "envFile": "${workspaceFolder}/.env"
         }
     ]
